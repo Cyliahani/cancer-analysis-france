@@ -41,10 +41,10 @@ def charger_donnees():
     try:
         df = pd.read_csv('data/processed/cancer_cleaned.csv')
         df['date_diagnostic'] = pd.to_datetime(df['date_diagnostic'])
-        print(f"✅ Données chargées: {len(df)} patients")
+        print(f"Données chargées: {len(df)} patients")
         return df
     except FileNotFoundError:
-        print("❌ Fichier de données introuvable. Exécutez d'abord 01_data_preparation.py")
+        print("Fichier de données introuvable. Exécutez d'abord 01_data_preparation.py")
         return None
 
 def visualiser_demographics(df):
@@ -55,7 +55,7 @@ def visualiser_demographics(df):
         df (pd.DataFrame): DataFrame des données cliniques
     """
     
-    print("📊 Génération des graphiques démographiques...")
+    print("Génération des graphiques démographiques...")
     
     # Figure avec plusieurs sous-graphiques
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
@@ -118,7 +118,7 @@ def visualiser_demographics(df):
     plt.savefig('results/figures/demographics_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print("✅ Graphique sauvegardé: demographics_analysis.png")
+    print("Graphique sauvegardé: demographics_analysis.png")
 
 def visualiser_types_cancer(df):
     """
@@ -128,7 +128,7 @@ def visualiser_types_cancer(df):
         df (pd.DataFrame): DataFrame des données cliniques
     """
     
-    print("🎗️ Génération des graphiques des types de cancer...")
+    print("Génération des graphiques des types de cancer...")
     
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
     fig.suptitle('Analyse des Types de Cancer', fontsize=16, y=0.98)
@@ -189,7 +189,7 @@ def visualiser_types_cancer(df):
     plt.savefig('results/figures/cancer_types_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print("✅ Graphique sauvegardé: cancer_types_analysis.png")
+    print(" Graphique sauvegardé: cancer_types_analysis.png")
 
 def visualiser_survie_pronostic(df):
     """
@@ -199,7 +199,7 @@ def visualiser_survie_pronostic(df):
         df (pd.DataFrame): DataFrame des données cliniques
     """
     
-    print("💗 Génération des graphiques de survie...")
+    print("Génération des graphiques de survie...")
     
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
     fig.suptitle('Analyse de Survie et Pronostic', fontsize=16, y=0.98)
@@ -267,7 +267,7 @@ def visualiser_survie_pronostic(df):
     plt.savefig('results/figures/survival_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print("✅ Graphique sauvegardé: survival_analysis.png")
+    print("Graphique sauvegardé: survival_analysis.png")
 
 def visualiser_facteurs_risque(df):
     """
@@ -277,7 +277,7 @@ def visualiser_facteurs_risque(df):
         df (pd.DataFrame): DataFrame des données cliniques
     """
     
-    print("⚠️ Génération des graphiques des facteurs de risque...")
+    print("Génération des graphiques des facteurs de risque...")
     
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
     fig.suptitle('Analyse des Facteurs de Risque', fontsize=16, y=0.98)
@@ -342,7 +342,7 @@ def visualiser_facteurs_risque(df):
     plt.savefig('results/figures/risk_factors_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print("✅ Graphique sauvegardé: risk_factors_analysis.png")
+    print("Graphique sauvegardé: risk_factors_analysis.png")
 
 def visualiser_correlations(df):
     """
@@ -352,7 +352,7 @@ def visualiser_correlations(df):
         df (pd.DataFrame): DataFrame des données cliniques
     """
     
-    print("🔗 Génération de la matrice de corrélation...")
+    print(" Génération de la matrice de corrélation...")
     
     # Variables numériques pour la corrélation
     numeric_vars = ['age', 'duree_sejour', 'nb_traitements', 'score_risque', 'imc']
@@ -388,7 +388,7 @@ def visualiser_correlations(df):
     plt.savefig('results/figures/correlation_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print("✅ Graphique sauvegardé: correlation_analysis.png")
+    print(" Graphique sauvegardé: correlation_analysis.png")
 
 def creer_dashboard_interactif(df):
     """
@@ -398,7 +398,7 @@ def creer_dashboard_interactif(df):
         df (pd.DataFrame): DataFrame des données cliniques
     """
     
-    print("📊 Création du dashboard interactif...")
+    print(" Création du dashboard interactif...")
     
     # Créer des sous-graphiques
     fig = make_subplots(
@@ -475,7 +475,7 @@ def creer_dashboard_interactif(df):
     # Sauvegarder le dashboard
     fig.write_html('results/figures/dashboard_interactif.html')
     
-    print("✅ Dashboard interactif sauvegardé: dashboard_interactif.html")
+    print(" Dashboard interactif sauvegardé: dashboard_interactif.html")
 
 def generer_rapport_visualisation():
     """
@@ -566,14 +566,14 @@ def generer_rapport_visualisation():
     with open('results/reports/rapport_visualisation.md', 'w', encoding='utf-8') as f:
         f.write(rapport)
     
-    print(f"📄 Rapport de visualisation sauvegardé: results/reports/rapport_visualisation.md")
+    print(f" Rapport de visualisation sauvegardé: results/reports/rapport_visualisation.md")
 
 def main():
     """
     Fonction principale qui génère toutes les visualisations.
     """
     
-    print("📊 GÉNÉRATION DES VISUALISATIONS")
+    print("GÉNÉRATION DES VISUALISATIONS")
     print("="*40)
     
     # Charger les données
@@ -596,9 +596,9 @@ def main():
     # Générer le rapport
     generer_rapport_visualisation()
     
-    print(f"\n✨ Toutes les visualisations ont été générées !")
-    print(f"📁 Consultez le dossier 'results/figures/' pour voir les graphiques.")
-    print(f"🌐 Ouvrez 'dashboard_interactif.html' dans votre navigateur.")
+    print(f" Toutes les visualisations ont été générées !")
+    print(f" Consultez le dossier 'results/figures/' pour voir les graphiques.")
+    print(f"Ouvrez 'dashboard_interactif.html' dans votre navigateur.")
 
 if __name__ == "__main__":
     main()
