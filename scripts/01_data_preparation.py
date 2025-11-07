@@ -288,7 +288,7 @@ def sauvegarder_donnees(df):
     # Format Excel pour faciliter l'exploration
     df_clean.to_excel('data/processed/cancer_data.xlsx', index=False)
     
-    print("✅ Données sauvegardées avec succès !")
+    print("Données sauvegardées avec succès !")
     print(f"   - Fichier CSV brut: data/raw/cancer_data_france.csv")
     print(f"   - Fichier CSV nettoyé: data/processed/cancer_cleaned.csv") 
     print(f"   - Fichier Excel: data/processed/cancer_data.xlsx")
@@ -330,7 +330,7 @@ def main():
     Fonction principale qui orchestre la préparation des données.
     """
     
-    print("🏥 PRÉPARATION DES DONNÉES CLINIQUES - CANCER FRANCE")
+    print("PRÉPARATION DES DONNÉES CLINIQUES - CANCER FRANCE")
     print("="*60)
     
     # Génération des données
@@ -345,8 +345,8 @@ def main():
     # Statistiques
     afficher_statistiques(df_clean)
     
-    print(f"\n✨ Préparation terminée ! Vous pouvez maintenant analyser les données.")
-    print(f"📁 Consultez le dossier 'data/' pour voir les fichiers générés.")
+    print(f" Préparation terminée ! Vous pouvez maintenant analyser les données.")
+    print(f"Consultez le dossier 'data/' pour voir les fichiers générés.")
 
 if __name__ == "__main__":
     main()
