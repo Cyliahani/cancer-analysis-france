@@ -11,7 +11,7 @@ Données basées sur :
 - Répartition par type de cancer selon les statistiques françaises
 - Facteurs démographiques réalistes
 
-Auteur: Votre Nom
+Auteur: Cylia HANI
 Date: 2024
 """
 
