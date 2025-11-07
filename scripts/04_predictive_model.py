@@ -42,10 +42,10 @@ def charger_donnees():
     try:
         df = pd.read_csv('data/processed/cancer_cleaned.csv')
         df['date_diagnostic'] = pd.to_datetime(df['date_diagnostic'])
-        print(f"✅ Données chargées: {len(df)} patients")
+        print(f" Données chargées: {len(df)} patients")
         return df
     except FileNotFoundError:
-        print("❌ Fichier de données introuvable. Exécutez d'abord 01_data_preparation.py")
+        print(" Fichier de données introuvable. Exécutez d'abord 01_data_preparation.py")
         return None
 
 def preparer_donnees_survie(df):
@@ -161,7 +161,7 @@ def entrainer_modeles_survie(X, y):
         dict: Résultats des modèles
     """
     
-    print("🚀 Entraînement des modèles de survie...")
+    print("Entraînement des modèles de survie...")
     
     # Division des données
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, 
@@ -218,7 +218,7 @@ def optimiser_meilleur_modele(X, y, results):
         Pipeline: Modèle optimisé
     """
     
-    print("🔍 Optimisation du meilleur modèle...")
+    print("Optimisation du meilleur modèle...")
     
     # Trouver le meilleur modèle basé sur l'AUC
     best_model_name = max(results.keys(), key=lambda k: results[k]['auc'])
@@ -272,7 +272,7 @@ def analyser_importance_features(best_model, X):
         pd.Series: Importance des features
     """
     
-    print("📊 Analyse de l'importance des variables...")
+    print("Analyse de l'importance des variables...")
     
     # Récupérer les noms des features après preprocessing
     try:
@@ -315,7 +315,7 @@ def visualiser_resultats_survie(results, feature_importance=None):
         feature_importance (pd.Series): Importance des features
     """
     
-    print("📈 Génération des visualisations des résultats...")
+    print(" Génération des visualisations des résultats...")
     
     # Créer les dossiers nécessaires
     os.makedirs('results/figures', exist_ok=True)
@@ -426,7 +426,7 @@ def visualiser_resultats_survie(results, feature_importance=None):
     plt.savefig('results/figures/survival_prediction_results.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print("✅ Graphique sauvegardé: survival_prediction_results.png")
+    print(" Graphique sauvegardé: survival_prediction_results.png")
 
 def predire_nouveaux_patients(best_model, exemples_patients):
     """
@@ -440,7 +440,7 @@ def predire_nouveaux_patients(best_model, exemples_patients):
         pd.DataFrame: Prédictions avec probabilités
     """
     
-    print("🔮 Prédictions sur de nouveaux patients...")
+    print("Prédictions sur de nouveaux patients...")
     
     # Prédictions
     predictions = best_model.predict(exemples_patients)
@@ -487,7 +487,7 @@ def sauvegarder_modele(best_model, model_name='best_survival_model'):
     
     filepath = f'results/models/{model_name}.joblib'
     joblib.dump(best_model, filepath)
-    print(f"💾 Modèle sauvegardé: {filepath}")
+    print(f" Modèle sauvegardé: {filepath}")
 
 def generer_rapport_modelisation(results, best_model_name, predictions_exemples):
     """
@@ -590,14 +590,14 @@ Exemples de prédictions pour évaluer le modèle :
     with open('results/reports/rapport_modelisation.md', 'w', encoding='utf-8') as f:
         f.write(rapport)
     
-    print(f"📄 Rapport de modélisation sauvegardé: results/reports/rapport_modelisation.md")
+    print(f" Rapport de modélisation sauvegardé: results/reports/rapport_modelisation.md")
 
 def main():
     """
     Fonction principale qui orchestre la modélisation prédictive.
     """
     
-    print("🤖 MODÉLISATION PRÉDICTIVE - SURVIE CANCER")
+    print("MODÉLISATION PRÉDICTIVE - SURVIE CANCER")
     print("="*50)
     
     # Charger les données
@@ -625,7 +625,7 @@ def main():
     exemples = creer_exemples_patients()
     predictions_exemples = predire_nouveaux_patients(best_model, exemples)
     
-    print("\n🔮 PRÉDICTIONS SUR NOUVEAUX PATIENTS:")
+    print("\n PRÉDICTIONS SUR NOUVEAUX PATIENTS:")
     print("="*45)
     for i, row in predictions_exemples.iterrows():
         print(f"Patient {i+1}: {row['sexe']}, {row['age']} ans, {row['type_cancer']} stade {row['stade']}")
@@ -638,10 +638,10 @@ def main():
     # Générer le rapport
     generer_rapport_modelisation(results, best_model_name, predictions_exemples)
     
-    print(f"\n✨ Modélisation terminée !")
-    print(f"🎯 Meilleur modèle: {best_model_name.replace('_', ' ')}")
-    print(f"📊 AUC: {results[best_model_name]['auc']:.3f}")
-    print(f"📁 Consultez le dossier 'results/' pour tous les résultats.")
+    print(f" Modélisation terminée !")
+    print(f" Meilleur modèle: {best_model_name.replace('_', ' ')}")
+    print(f"AUC: {results[best_model_name]['auc']:.3f}")
+    print(f" Consultez le dossier 'results/' pour tous les résultats.")
 
 if __name__ == "__main__":
     main()
